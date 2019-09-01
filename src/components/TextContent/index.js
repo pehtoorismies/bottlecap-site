@@ -35,7 +35,7 @@ const TextContent = props => {
   const { header, description } = props;
 
   return (
-    <Wrapper px={[20, 20, 50]}>
+    <Wrapper >
       <Header fontSize={[56, 56, 88]} width={[300, 418, 775]}>
         {header}
       </Header>

@@ -4,8 +4,9 @@ import { createGlobalStyle } from 'styled-components';
 const GlobalStyle = createGlobalStyle`
   ${reset}
   @import url('https://fonts.googleapis.com/css?family=Eczar:600|Roboto+Mono&display=swap');
+  
   body {
-    background-color: yellow;
+ 
   }
 `;
 
