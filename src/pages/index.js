@@ -5,6 +5,7 @@ import { Box, Flex } from 'rebass';
 import Layout from '../components/Layout';
 import TextContent from '../components/TextContent';
 import SocialMediaLink from '../components/SocialMediaLink';
+import ContactForm from '../components/ContactForm';
 import logo from '../images/bottlecap-logo.svg';
 
 const Content = styled(Box)`
@@ -88,10 +89,10 @@ const IndexPage = () => (
             header={TEXT_CONTENT.second.header}
             description={TEXT_CONTENT.second.description}
           />
-          <Flex flexDirection="column" alignItems="flex-end" my={[30, 30, 50]}>
-            {SOCIAL_MEDIA.map(value => {
-              return <SocialMediaLink key={value.id} {...value} />;
-            })}
+          <Flex justifyContent="center" width="100%" my={4}>
+            <Box width={[335, 335, 437]}>
+              <ContactForm />
+            </Box>
           </Flex>
         </Box>
       </Content>
@@ -104,6 +105,11 @@ const IndexPage = () => (
             header={TEXT_CONTENT.third.header}
             description={TEXT_CONTENT.third.description}
           />
+          <Flex flexDirection="column" alignItems="flex-end" my={[30, 30, 50]}>
+            {SOCIAL_MEDIA.map(value => {
+              return <SocialMediaLink key={value.id} {...value} />;
+            })}
+          </Flex>
         </Box>
       </Content>
     </Box>
