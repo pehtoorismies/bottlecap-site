@@ -8,15 +8,14 @@ import ContentBlock from '../components/ContentBlock';
 import SocialMediaLink from '../components/SocialMediaLink';
 import ContactForm from '../components/ContactForm';
 import logo from '../images/bottlecap-logo.svg';
-import bg1 from '../images/header.png';
-import bg2 from '../images/shops.png';
-import bg3 from '../images/follow.png';
+import bgHeader from '../images/header.png';
+import bgForms from '../images/shops.png';
+import bgSocial from '../images/follow.png';
 
 const LogoBoxTopLeft = styled(Box)`
   position: absolute;
   z-index: 2;
   top: 24px;
-  object-fit: contain;
 `;
 
 const LogoBoxBottomRight = styled(Box)`
@@ -24,29 +23,22 @@ const LogoBoxBottomRight = styled(Box)`
   z-index: 2;
   bottom: 24px;
   right: 24px;
-  object-fit: contain;
 `;
 
 const Logo = styled.img``;
 
-// common margins
-
-const CONTENT_PADDING_TOP = [200, 248, 248];
-const CONTENT_PADDING_BOTTOM = [80, 80, 180];
-const CONTENT_PADDING_BOTTOM_LAST = CONTENT_PADDING_BOTTOM.map(x => x + 30);
-
 const TEXT_CONTENT = {
-  first: {
+  header: {
     header: 'Here to join the celebration of great craft beer.',
     description:
       'Importing small batches of high-quality beers with care and excellent customer service. Will ensure that we will always provide interesting and new flavours.',
   },
-  second: {
+  forms: {
     header: 'Shop keepers, restaurants and bars.',
     description:
       'Want to offer your customers the best craft beers around? If you are interested in offering our beers at your menu or shop, please don´t hesitate to contact.',
   },
-  third: {
+  social: {
     header: 'Follow & lorem',
     description:
       'Stay updated whith the selection of beers that we offer and find out the locations where they can be found on a menu or on the shelf.',
@@ -66,62 +58,104 @@ const SOCIAL_MEDIA = [
   },
 ];
 
-const MARGIN_X = [20, 20, 50];
+const COMMON_BG = {
+  backgroundRepeat: 'no-repeat',
+  topPadding: [200, 248, 248],
+  bottomPadding: [80, 80, 180],
+  backgroundPosition: [
+    'left top, center',
+    'left top, center',
+    'left top, center',
+  ],
+};
 
+const fromBg = width => `${width}px ${(800 / 1440) * width}px`;
+
+const BACKGROUNDS = {
+  header: {
+    ...COMMON_BG,
+    backgroundImage: `url(${bgHeader}), linear-gradient(to bottom, #f7e1cb, #8eb390)`,
+    backgroundSize: 'cover, auto',
+  },
+  forms: {
+    ...COMMON_BG,
+    backgroundImage: `url(${bgForms}), linear-gradient(to bottom, #8ea6e0, #eed4df)`,
+    backgroundSize: [`contain, auto`, `${fromBg(1700)}, auto`, 'cover, auto'],
+    backgroundPosition: [
+      'left -600px top, center',
+      'left -400px top, center',
+      'left top, center',
+    ],
+  },
+
+  social: {
+    ...COMMON_BG,
+    backgroundImage: `url(${bgSocial}), linear-gradient(to bottom, #7fbfd3, #edd4df)`,
+    backgroundSize: [
+      `${fromBg(1100)}, auto`,
+      `${fromBg(1700)}, auto`,
+      'cover, auto',
+    ],
+    backgroundPosition: [
+      'left -300px top, center',
+      'left -500px top, center',
+      'left top, center',
+    ],
+    bottomPadding: [110, 110, 210],
+  },
+};
+
+const MarginX = props => (
+  <Box
+    {...props}
+    sx={{
+      mx: [20, 20, 50],
+      position: 'relative',
+    }}
+  />
+);
 const IndexPage = () => (
   <Layout>
     <SEO title="Bottle Cap - high quality beers import" />
-    <ContentBlock
-      topPadding={CONTENT_PADDING_TOP}
-      bottomPadding={CONTENT_PADDING_BOTTOM}
-      cssBgImage={`url(${bg1}), linear-gradient(to bottom, #f7e1cb, #8eb390)`}
-    >
+    <ContentBlock {...BACKGROUNDS.header}>
       <LogoBoxTopLeft mx={[20, 20, 50]}>
         <Logo src={logo} width="95px" height="56px" />
       </LogoBoxTopLeft>
-      <Box mx={MARGIN_X}>
+      <MarginX>
         <TextContent
-          header={TEXT_CONTENT.first.header}
-          description={TEXT_CONTENT.first.description}
+          header={TEXT_CONTENT.header.header}
+          description={TEXT_CONTENT.header.description}
         />
-      </Box>
+      </MarginX>
     </ContentBlock>
-    <ContentBlock
-      topPadding={CONTENT_PADDING_TOP}
-      bottomPadding={CONTENT_PADDING_BOTTOM}
-      cssBgImage={`url(${bg2}), linear-gradient(to bottom, #8ea6e0, #eed4df)`}
-    >
-      <Box mx={MARGIN_X}>
+    <ContentBlock {...BACKGROUNDS.forms}>
+      <MarginX>
         <TextContent
-          header={TEXT_CONTENT.second.header}
-          description={TEXT_CONTENT.second.description}
+          header={TEXT_CONTENT.forms.header}
+          description={TEXT_CONTENT.forms.description}
         />
         <Flex justifyContent="center" width="100%" my={4}>
           <Box width={[335, 335, 437]}>
             <ContactForm />
           </Box>
         </Flex>
-      </Box>
+      </MarginX>
     </ContentBlock>
-    <ContentBlock
-      topPadding={CONTENT_PADDING_TOP}
-      bottomPadding={CONTENT_PADDING_BOTTOM_LAST}
-      cssBgImage={`url(${bg3}), linear-gradient(to bottom, #7fbfd3, #edd4df)`}
-    >
-      <Box mx={MARGIN_X}>
-        <LogoBoxBottomRight mx={[20, 20, 50]}>
-          <Logo src={logo} width="95px" height="56px" />
-        </LogoBoxBottomRight>
+    <ContentBlock {...BACKGROUNDS.social}>
+      <LogoBoxBottomRight mx={[20, 20, 50]}>
+        <Logo src={logo} width="95px" height="56px" />
+      </LogoBoxBottomRight>
+      <MarginX>
         <TextContent
-          header={TEXT_CONTENT.third.header}
-          description={TEXT_CONTENT.third.description}
+          header={TEXT_CONTENT.social.header}
+          description={TEXT_CONTENT.social.description}
         />
         <Flex flexDirection="column" alignItems="flex-end" my={[30, 30, 50]}>
           {SOCIAL_MEDIA.map(value => {
             return <SocialMediaLink key={value.id} {...value} />;
           })}
         </Flex>
-      </Box>
+      </MarginX>
     </ContentBlock>
   </Layout>
 );

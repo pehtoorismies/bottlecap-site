@@ -78,6 +78,8 @@ const DefaultProps = {};
 
 const MARGIN = 2;
 
+// name="contact" method="POST" data-netlify="true"
+
 const ContactForm = () => {
   
 
