@@ -1,9 +1,7 @@
 import React from 'react';
-import { string } from 'prop-types';
+// import { string } from 'prop-types';
 import styled from 'styled-components';
 import { Button, Box, Text, Flex } from 'rebass';
-
-// import { Label, Input, Select, Textarea, Radio, Checkbox } from '@rebass/forms';
 
 const Heading = styled(Text)`
   font-family: Eczar;
@@ -80,8 +78,8 @@ const DefaultProps = {};
 
 const MARGIN = 2;
 
-const ContactForm = props => {
-  const {} = props;
+const ContactForm = () => {
+  
 
   return (
     <Box width="100%" >

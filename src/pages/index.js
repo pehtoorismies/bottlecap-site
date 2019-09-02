@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Box, Flex } from 'rebass';
-
+import SEO from '../components/Seo';
 import Layout from '../components/Layout';
 import TextContent from '../components/TextContent';
 import ContentBlock from '../components/ContentBlock';
@@ -70,6 +70,7 @@ const MARGIN_X = [20, 20, 50];
 
 const IndexPage = () => (
   <Layout>
+    <SEO title="Bottle Cap - high quality beers import" />
     <ContentBlock
       topPadding={CONTENT_PADDING_TOP}
       bottomPadding={CONTENT_PADDING_BOTTOM}

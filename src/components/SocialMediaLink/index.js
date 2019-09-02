@@ -1,7 +1,7 @@
 import React from 'react';
 import { string } from 'prop-types';
 import styled from 'styled-components';
-import { Box, Flex, Text } from 'rebass';
+import { Flex, Text } from 'rebass';
 import arrow from '../../images/arrow.svg';
 
 const Name = styled(Text)`
