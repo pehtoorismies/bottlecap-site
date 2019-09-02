@@ -134,20 +134,23 @@ const ContactForm = () => {
         onSubmit={(values, actions) => {
           const data = qs.stringify(values);
           const options = {
-            method: "POST",
-            headers: { "Content-Type": "application/x-www-form-urlencoded" },
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
             data,
-            url: "/"
+            url: '/',
           };
-          try {
-            await axios(options);
-            
-          } catch (e) {
-            console.log(e);
-           
-          } finally {
-            actions.setSubmitting(false);
-          }
+          axios(options)
+            .then(function(response) {
+              // handle success
+              console.log(response);
+            })
+            .catch(function(error) {
+              // handle error
+              console.log(error);
+            })
+            .finally(function() {
+              actions.setSubmitting(false);
+            });
         }}
         render={({
           values,

@@ -116,7 +116,7 @@ const MarginX = props => (
 );
 const IndexPage = () => (
   <Layout>
-    <SEO title="Bottle Cap - high quality beers import" />
+    <SEO title="High-quality beer import" />
     <ContentBlock {...BACKGROUNDS.header}>
       <LogoBoxTopLeft mx={[20, 20, 50]}>
         <Logo src={logo} width="95px" height="56px" />
