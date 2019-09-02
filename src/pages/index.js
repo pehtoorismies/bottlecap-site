@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Box, Flex } from 'rebass';
+import { Box, Flex } from 'rebass/styled-components';
 import SEO from '../components/Seo';
 import Layout from '../components/Layout';
 import TextContent from '../components/TextContent';

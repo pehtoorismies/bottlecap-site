@@ -1,7 +1,7 @@
 import React from 'react';
 // import { string } from 'prop-types';
 import styled from 'styled-components';
-import { Button, Box, Text, Flex } from 'rebass';
+import { Button, Box, Text, Flex } from 'rebass/styled-components';
 
 const Heading = styled(Text)`
   font-family: Eczar;

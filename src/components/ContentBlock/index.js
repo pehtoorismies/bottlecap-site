@@ -1,7 +1,7 @@
 import React from 'react';
 import { string, node, arrayOf, number } from 'prop-types';
 import styled from 'styled-components';
-import { Box } from 'rebass';
+import { Box } from 'rebass/styled-components';
 
 const PropTypes = {
   cssBgImage: string,

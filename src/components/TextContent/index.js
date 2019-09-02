@@ -1,7 +1,7 @@
 import React from 'react';
 import { string } from 'prop-types';
 import styled from 'styled-components';
-import { Text, Box, Flex } from 'rebass';
+import { Text, Box, Flex } from 'rebass/styled-components';
 
 const PropTypes = {
   header: string,
