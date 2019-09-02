@@ -4,14 +4,13 @@ import { Box, Flex } from 'rebass';
 
 import Layout from '../components/Layout';
 import TextContent from '../components/TextContent';
+import ContentBlock from '../components/ContentBlock';
 import SocialMediaLink from '../components/SocialMediaLink';
 import ContactForm from '../components/ContactForm';
 import logo from '../images/bottlecap-logo.svg';
-
-const Content = styled(Box)`
-  background-image: linear-gradient(to bottom, #8ea6e0, #eed4df);
-  position: relative;
-`;
+import bg1 from '../images/header.png';
+import bg2 from '../images/shops.png';
+import bg3 from '../images/follow.png';
 
 const LogoBoxTopLeft = styled(Box)`
   position: absolute;
@@ -71,48 +70,58 @@ const MARGIN_X = [20, 20, 50];
 
 const IndexPage = () => (
   <Layout>
-    <Box>
-      <Content pt={CONTENT_PADDING_TOP} pb={CONTENT_PADDING_BOTTOM}>
-        <LogoBoxTopLeft mx={[20, 20, 50]}>
+    <ContentBlock
+      topPadding={CONTENT_PADDING_TOP}
+      bottomPadding={CONTENT_PADDING_BOTTOM}
+      cssBgImage={`url(${bg1}), linear-gradient(to bottom, #f7e1cb, #8eb390)`}
+    >
+      <LogoBoxTopLeft mx={[20, 20, 50]}>
+        <Logo src={logo} width="95px" height="56px" />
+      </LogoBoxTopLeft>
+      <Box mx={MARGIN_X}>
+        <TextContent
+          header={TEXT_CONTENT.first.header}
+          description={TEXT_CONTENT.first.description}
+        />
+      </Box>
+    </ContentBlock>
+    <ContentBlock
+      topPadding={CONTENT_PADDING_TOP}
+      bottomPadding={CONTENT_PADDING_BOTTOM}
+      cssBgImage={`url(${bg2}), linear-gradient(to bottom, #8ea6e0, #eed4df)`}
+    >
+      <Box mx={MARGIN_X}>
+        <TextContent
+          header={TEXT_CONTENT.second.header}
+          description={TEXT_CONTENT.second.description}
+        />
+        <Flex justifyContent="center" width="100%" my={4}>
+          <Box width={[335, 335, 437]}>
+            <ContactForm />
+          </Box>
+        </Flex>
+      </Box>
+    </ContentBlock>
+    <ContentBlock
+      topPadding={CONTENT_PADDING_TOP}
+      bottomPadding={CONTENT_PADDING_BOTTOM_LAST}
+      cssBgImage={`url(${bg3}), linear-gradient(to bottom, #7fbfd3, #edd4df)`}
+    >
+      <Box mx={MARGIN_X}>
+        <LogoBoxBottomRight mx={[20, 20, 50]}>
           <Logo src={logo} width="95px" height="56px" />
-        </LogoBoxTopLeft>
-        <Box mx={MARGIN_X}>
-          <TextContent
-            header={TEXT_CONTENT.first.header}
-            description={TEXT_CONTENT.first.description}
-          />
-        </Box>
-      </Content>
-      <Content pt={CONTENT_PADDING_TOP} pb={CONTENT_PADDING_BOTTOM}>
-        <Box mx={MARGIN_X}>
-          <TextContent
-            header={TEXT_CONTENT.second.header}
-            description={TEXT_CONTENT.second.description}
-          />
-          <Flex justifyContent="center" width="100%" my={4}>
-            <Box width={[335, 335, 437]}>
-              <ContactForm />
-            </Box>
-          </Flex>
-        </Box>
-      </Content>
-      <Content pt={CONTENT_PADDING_TOP} pb={CONTENT_PADDING_BOTTOM_LAST}>
-        <Box mx={MARGIN_X}>
-          <LogoBoxBottomRight mx={[20, 20, 50]}>
-            <Logo src={logo} width="95px" height="56px" />
-          </LogoBoxBottomRight>
-          <TextContent
-            header={TEXT_CONTENT.third.header}
-            description={TEXT_CONTENT.third.description}
-          />
-          <Flex flexDirection="column" alignItems="flex-end" my={[30, 30, 50]}>
-            {SOCIAL_MEDIA.map(value => {
-              return <SocialMediaLink key={value.id} {...value} />;
-            })}
-          </Flex>
-        </Box>
-      </Content>
-    </Box>
+        </LogoBoxBottomRight>
+        <TextContent
+          header={TEXT_CONTENT.third.header}
+          description={TEXT_CONTENT.third.description}
+        />
+        <Flex flexDirection="column" alignItems="flex-end" my={[30, 30, 50]}>
+          {SOCIAL_MEDIA.map(value => {
+            return <SocialMediaLink key={value.id} {...value} />;
+          })}
+        </Flex>
+      </Box>
+    </ContentBlock>
   </Layout>
 );
 
