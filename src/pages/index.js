@@ -49,12 +49,12 @@ const SOCIAL_MEDIA = [
   {
     id: 1,
     name: 'Facebook',
-    link: 'Link',
+    link: 'https://facebook.com',
   },
   {
     id: 2,
     name: 'Instagram',
-    link: 'Link',
+    link: 'https://instagram.com',
   },
 ];
 
@@ -142,7 +142,7 @@ const IndexPage = () => (
       </MarginX>
     </ContentBlock>
     <ContentBlock {...BACKGROUNDS.social}>
-      <LogoBoxBottomRight mx={[20, 20, 50]}>
+      <LogoBoxBottomRight>
         <Logo src={logo} width="95px" height="56px" />
       </LogoBoxBottomRight>
       <MarginX>

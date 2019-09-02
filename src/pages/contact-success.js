@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Box, Flex, Text } from 'rebass/styled-components';
+import { Box, Flex } from 'rebass/styled-components';
 import { Link } from "gatsby"
 import SEO from '../components/Seo';
 import Layout from '../components/Layout';
@@ -13,6 +13,7 @@ const LogoBoxTopLeft = styled(Box)`
   top: 24px;
 `;
 
+// eslint-disable-next-line react/jsx-props-no-spreading
 const StyledLink = styled(props => <Link {...props} />)`
   color: rgb(184, 97, 152);
   font-size: 18px;

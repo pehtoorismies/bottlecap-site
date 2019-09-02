@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled, { css } from 'styled-components';
 import { Box, Text, Flex } from 'rebass/styled-components';
-import { Formik, Field, Form, ErrorMessage } from 'formik';
+import { Formik, Field, Form } from 'formik';
 import * as Yup from 'yup';
 import qs from 'qs';
 import axios from 'axios';
@@ -97,7 +97,6 @@ const CustomInputComponent = ({
   form: { touched, errors },
   placeholder,
   isTextArea = false,
-  ...props
 }) => {
   const hasError = touched[field.name] && errors[field.name];
   const InputCmp = isTextArea ? TextArea : InputField;
@@ -115,7 +114,7 @@ const CustomInputComponent = ({
 
 const ContactForm = () => {
   const [generalError, setGeneralError] = useState(null);
-  console.log('GE', generalError);
+  
   return (
     <Box width="100%">
       <Flex justifyContent="flex-end">
@@ -142,26 +141,20 @@ const ContactForm = () => {
           };
 
           axios(options)
-            .then(function(response) {
+            .then(() => {
               actions.resetForm();
               navigate('/contact-success');
             })
-            .catch(function(error) {
-              console.log(error);
+            .catch((error) => {
+              // eslint-disable-next-line no-console
+              console.error(error);
               setGeneralError('Problems sending form, try again later');
             })
-            .finally(function() {
+            .finally(() => {
               actions.setSubmitting(false);
             });
         }}
         render={({
-          values,
-          errors,
-          status,
-          touched,
-          handleBlur,
-          handleChange,
-          handleSubmit,
           isSubmitting,
         }) => (
           <Form

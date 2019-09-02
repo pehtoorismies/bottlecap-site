@@ -36,9 +36,9 @@ const SocialMediaLink = props => {
 
   return (
     <Anchor href={link}>
-      <Flex alignItems="center" >
+      <Flex width={[250, 250, 300]} alignItems="center" justifyContent="space-between"  >
         <ArrowImage src={arrow} height="9px" width="65px" />
-        <Flex width={[120, 120, 150]} justifyContent="flex-end">
+        <Flex justifyContent="flex-end" >
           <Name fontSize={[26, 26, 32]}>{name}</Name>
         </Flex>
       </Flex>
