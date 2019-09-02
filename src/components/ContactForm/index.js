@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled, { css } from 'styled-components';
 import { Box, Text, Flex } from 'rebass/styled-components';
-import { Formik, Field, Form } from 'formik';
+import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import qs from 'qs';
 import axios from 'axios';
+import { navigate } from 'gatsby';
 
 const ContactSchema = Yup.object().shape({
   name: Yup.string().required('Name is required'),
@@ -81,7 +82,7 @@ const SubmitButton = styled.button`
   }
 `;
 
-const ErrorNote = styled.div`
+const ErrorNote = styled(Text)`
   font-family: 'Roboto Mono';
   color: ${RED};
   font-size: 14px;
@@ -113,6 +114,8 @@ const CustomInputComponent = ({
 // name="contact" method="POST" data-netlify="true"
 
 const ContactForm = () => {
+  const [generalError, setGeneralError] = useState(null);
+  console.log('GE', generalError);
   return (
     <Box width="100%">
       <Flex justifyContent="flex-end">
@@ -129,11 +132,7 @@ const ContactForm = () => {
         }}
         validationSchema={ContactSchema}
         onSubmit={(values, actions) => {
-          console.log('values', values);
-          
-          
           const data = qs.stringify(values);
-          console.log('data', data);
           
           const options = {
             method: 'POST',
@@ -141,14 +140,15 @@ const ContactForm = () => {
             data,
             url: '/',
           };
+
           axios(options)
             .then(function(response) {
-              // handle success
-              console.log(response);
+              actions.resetForm();
+              navigate('/contact-success');
             })
             .catch(function(error) {
-              // handle error
               console.log(error);
+              setGeneralError('Problems sending form, try again later');
             })
             .finally(function() {
               actions.setSubmitting(false);
@@ -164,7 +164,11 @@ const ContactForm = () => {
           handleSubmit,
           isSubmitting,
         }) => (
-          <Form data-netlify="true" data-netlify-honeypot="bot-field" name="contact">
+          <Form
+            data-netlify="true"
+            data-netlify-honeypot="bot-field"
+            name="contact"
+          >
             <Field type="hidden" name="bot-field" />
             <Field hidden name="form-name" />
             <Field
@@ -189,7 +193,7 @@ const ContactForm = () => {
               name="message"
               isTextArea
             />
-
+            <ErrorNote my={3}>{generalError}</ErrorNote>
             <SubmitButton type="submit" disabled={isSubmitting}>
               send
             </SubmitButton>

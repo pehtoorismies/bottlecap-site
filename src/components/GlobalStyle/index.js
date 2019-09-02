@@ -5,8 +5,9 @@ const GlobalStyle = createGlobalStyle`
   ${reset}
   @import url('https://fonts.googleapis.com/css?family=Eczar:600|Roboto+Mono&display=swap');
   
-  body {
- 
+  html, body {
+    height: 100%;
+    font-family: 'Roboto Mono', sans-serif
   }
 `;
 
