@@ -164,7 +164,7 @@ const ContactForm = () => {
         }) => (
           <Form data-netlify="true" data-netlify-honeypot="bot-field">
             <Field type="hidden" name="bot-field" />
-            <Field type="hidden" name="form-name" />
+            <Field type="hidden" name="form-name" value="contact"/>
             <Field
               component={CustomInputComponent}
               placeholder="Name*"
