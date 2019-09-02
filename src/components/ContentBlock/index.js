@@ -1,18 +1,16 @@
 import React from 'react';
-import { string, node, arrayOf, number } from 'prop-types';
+import { string, node, arrayOf, number, oneOfType } from 'prop-types';
 import { Box } from 'rebass/styled-components';
 
 const PropTypes = {
-  backgroundImage: arrayOf(string).isRequired,
-  backgroundSize: arrayOf(string).isRequired,
+  backgroundImage: oneOfType([string, arrayOf(string)]).isRequired,
+  backgroundSize: oneOfType([string, arrayOf(string)]).isRequired,
   backgroundPosition: arrayOf(string).isRequired,
   children: node.isRequired,
   topPadding: arrayOf(number).isRequired,
   bottomPadding: arrayOf(number).isRequired,
 };
-const DefaultProps = {
-  
-};
+const DefaultProps = {};
 
 const ContentBlock = props => {
   const {

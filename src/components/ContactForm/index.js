@@ -1,8 +1,7 @@
 import React from 'react';
-// import { string } from 'prop-types';
 import styled, { css } from 'styled-components';
-import { Button, Box, Text, Flex } from 'rebass/styled-components';
-import { Formik, Field, Form, ErrorMessage } from 'formik';
+import { Box, Text, Flex } from 'rebass/styled-components';
+import { Formik, Field, Form } from 'formik';
 import * as Yup from 'yup';
 import qs from 'qs';
 import axios from 'axios';
@@ -92,8 +91,6 @@ const ErrorNote = styled.div`
 const PropTypes = {};
 const DefaultProps = {};
 
-const MARGIN = 2;
-
 const CustomInputComponent = ({
   field, // { name, value, onChange, onBlur }
   form: { touched, errors },
@@ -122,7 +119,7 @@ const ContactForm = () => {
         <Heading>Contact</Heading>
       </Flex>
       <Formik
-        initialValue={{
+        initialValues={{
           'bot-field': '',
           'form-name': 'contact',
           email: '',
@@ -132,7 +129,12 @@ const ContactForm = () => {
         }}
         validationSchema={ContactSchema}
         onSubmit={(values, actions) => {
+          console.log('values', values);
+          
+          
           const data = qs.stringify(values);
+          console.log('data', data);
+          
           const options = {
             method: 'POST',
             headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
@@ -164,7 +166,7 @@ const ContactForm = () => {
         }) => (
           <Form data-netlify="true" data-netlify-honeypot="bot-field">
             <Field type="hidden" name="bot-field" />
-            <Field type="hidden" name="form-name" value="contact"/>
+            <Field hidden name="form-name" />
             <Field
               component={CustomInputComponent}
               placeholder="Name*"
