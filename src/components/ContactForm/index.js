@@ -164,7 +164,7 @@ const ContactForm = () => {
           handleSubmit,
           isSubmitting,
         }) => (
-          <Form data-netlify="true" data-netlify-honeypot="bot-field">
+          <Form data-netlify="true" data-netlify-honeypot="bot-field" name="contact">
             <Field type="hidden" name="bot-field" />
             <Field hidden name="form-name" />
             <Field
