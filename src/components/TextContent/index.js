@@ -36,7 +36,7 @@ const TextContent = props => {
 
   return (
     <Wrapper >
-      <Header fontSize={[56, 56, 88]} width={[300, 418, 775]}>
+      <Header fontSize={[56, 56, 88]} width={[300, 418, 775]} mb={4}>
         {header}
       </Header>
       <Flex justifyContent="flex-end">
