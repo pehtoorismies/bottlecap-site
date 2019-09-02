@@ -1,7 +1,19 @@
 import React from 'react';
 // import { string } from 'prop-types';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { Button, Box, Text, Flex } from 'rebass/styled-components';
+import { Formik, Field, Form, ErrorMessage } from 'formik';
+import * as Yup from 'yup';
+import qs from 'qs';
+import axios from 'axios';
+
+const ContactSchema = Yup.object().shape({
+  name: Yup.string().required('Name is required'),
+  email: Yup.string()
+    .email('Please check your email address')
+    .required('Email is required'),
+  message: Yup.string().required('Message is required'),
+});
 
 const Heading = styled(Text)`
   font-family: Eczar;
@@ -12,51 +24,40 @@ const Heading = styled(Text)`
   color: #000000;
 `;
 
-//
-// margin-bottom: 0.5em;
+const RED = 'rgb(167, 88, 93)';
 
-const InputField = styled.input`
+const common = css`
   font-family: 'Roboto Mono';
   font-size: 14px;
   line-height: 1.71;
-  border: solid 2px black;
-  height: 56px;
+  border: solid 2px ${props => (props.hasError ? RED : 'black')};
+  color: ${props => (props.hasError ? RED : 'black')};
   width: 100%;
   padding: 4px 17px;
   box-sizing: border-box;
   background: none;
 
   &::placeholder {
-    color: black;
+    color: ${props => (props.hasError ? RED : 'black')};
   }
 
   &:focus {
     outline: none;
   }
+`;
+
+const InputField = styled.input`
+  ${common}
+  height: 56px;
 `;
 
 const TextArea = styled.textarea`
-  font-family: 'Roboto Mono';
-  font-size: 14px;
-  line-height: 1.71;
-  border: solid 2px black;
+  ${common}
   height: 140px;
-  width: 100%;
   max-width: 100%;
-  padding: 4px 17px;
-  box-sizing: border-box;
-  background: none;
-
-  &::placeholder {
-    color: black;
-  }
-
-  &:focus {
-    outline: none;
-  }
 `;
 
-const SubmitButton = styled(Button)`
+const SubmitButton = styled.button`
   width: 100%;
   background: black;
   height: 62px;
@@ -70,7 +71,22 @@ const SubmitButton = styled(Button)`
   text-align: center;
   color: #ffffff;
   text-transform: uppercase;
-  
+  border: none;
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+
+  &:disabled {
+    background: grey;
+    cursor: not-allowed;
+  }
+`;
+
+const ErrorNote = styled.div`
+  font-family: 'Roboto Mono';
+  color: ${RED};
+  font-size: 14px;
+  padding: 2px 0;
 `;
 
 const PropTypes = {};
@@ -78,33 +94,103 @@ const DefaultProps = {};
 
 const MARGIN = 2;
 
+const CustomInputComponent = ({
+  field, // { name, value, onChange, onBlur }
+  form: { touched, errors },
+  placeholder,
+  isTextArea = false,
+  ...props
+}) => {
+  const hasError = touched[field.name] && errors[field.name];
+  const InputCmp = isTextArea ? TextArea : InputField;
+  return (
+    <Box my={2}>
+      <InputCmp {...field} placeholder={placeholder} hasError={hasError} />
+      {touched[field.name] && errors[field.name] && (
+        <ErrorNote>{errors[field.name]}</ErrorNote>
+      )}
+    </Box>
+  );
+};
+
 // name="contact" method="POST" data-netlify="true"
 
 const ContactForm = () => {
-  
-
   return (
-    <Box width="100%" >
+    <Box width="100%">
       <Flex justifyContent="flex-end">
         <Heading>Contact</Heading>
       </Flex>
-      <Box as="form" onSubmit={e => e.preventDefault()} >
-        <Box my={MARGIN}>
-          <InputField placeholder="Name*" id="name" name="name" />
-        </Box>
-        <Box my={MARGIN}>
-          <InputField placeholder="Email address*" id="email" name="email" />
-        </Box>
-        <Box my={MARGIN}>
-          <InputField placeholder="Company*" id="company" name="company" />
-        </Box>
-        <Box my={MARGIN}>
-          <TextArea placeholder="Message*" id="message" name="message" />
-        </Box>
-        <Box width="100%" bg="pink">
-          <SubmitButton borderRadius={0}> send </SubmitButton>
-        </Box>
-      </Box>
+      <Formik
+        initialValue={{
+          'bot-field': '',
+          'form-name': 'contact',
+          email: '',
+          name: '',
+          company: '',
+          message: '',
+        }}
+        validationSchema={ContactSchema}
+        onSubmit={(values, actions) => {
+          const data = qs.stringify(values);
+          const options = {
+            method: "POST",
+            headers: { "Content-Type": "application/x-www-form-urlencoded" },
+            data,
+            url: "/"
+          };
+          try {
+            await axios(options);
+            
+          } catch (e) {
+            console.log(e);
+           
+          } finally {
+            actions.setSubmitting(false);
+          }
+        }}
+        render={({
+          values,
+          errors,
+          status,
+          touched,
+          handleBlur,
+          handleChange,
+          handleSubmit,
+          isSubmitting,
+        }) => (
+          <Form>
+            <Field type="hidden" name="bot-field" />
+            <Field type="hidden" name="form-name" />
+            <Field
+              component={CustomInputComponent}
+              placeholder="Name*"
+              name="name"
+            />
+            <Field
+              component={CustomInputComponent}
+              placeholder="Email address*"
+              type="email"
+              name="email"
+            />
+            <Field
+              component={CustomInputComponent}
+              placeholder="Company"
+              name="company"
+            />
+            <Field
+              component={CustomInputComponent}
+              placeholder="Message*"
+              name="message"
+              isTextArea
+            />
+
+            <SubmitButton type="submit" disabled={isSubmitting}>
+              send
+            </SubmitButton>
+          </Form>
+        )}
+      />
     </Box>
   );
 };

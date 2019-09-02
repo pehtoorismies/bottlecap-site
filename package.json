@@ -6,6 +6,7 @@
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "dependencies": {
     "@rebass/forms": "^4.0.5",
+    "axios": "^0.19.0",
     "babel-plugin-styled-components": "^1.10.6",
     "formik": "^1.5.8",
     "gatsby": "^2.13.73",
@@ -19,12 +20,14 @@
     "gatsby-source-filesystem": "^2.1.11",
     "gatsby-transformer-sharp": "^2.2.7",
     "prop-types": "^15.7.2",
+    "qs": "^6.8.0",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "react-helmet": "^5.2.1",
     "rebass": "^4.0.5",
     "styled-components": "^4.3.2",
-    "styled-reset": "^4.0.0"
+    "styled-reset": "^4.0.0",
+    "yup": "^0.27.0"
   },
   "devDependencies": {
     "@babel/core": "^7.5.5",
