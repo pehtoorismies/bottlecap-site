@@ -30,18 +30,18 @@ const Logo = styled.img``;
 const TEXT_CONTENT = {
   header: {
     header: 'Here to join the celebration of great craft beer.',
-    description:
-      'Importing small batches of high-quality beers with care and excellent customer service. Will ensure that we will always provide interesting and new flavours.',
+    description: `Bottle Cap imports small batches of high-quality craft beers from Europe to Finland. 
+      Our passion is to offer new and exciting beers with personal customer service.`,
   },
   forms: {
-    header: 'Shop keepers, restaurants and bars.',
+    header: 'Shopkeepers, restaurants and bars.',
     description:
       'Want to offer your customers the best craft beers around? If you are interested in offering our beers at your menu or shop, please don´t hesitate to contact.',
   },
   social: {
-    header: 'Follow & lorem',
+    header: 'Follow & like!',
     description:
-      'Stay updated whith the selection of beers that we offer and find out the locations where they can be found on a menu or on the shelf.',
+      'Stay updated with the beers we are currently offering and where to find them.',
   },
 };
 
@@ -49,12 +49,12 @@ const SOCIAL_MEDIA = [
   {
     id: 1,
     name: 'Facebook',
-    link: 'https://facebook.com',
+    link: 'https://www.facebook.com/bottlecapimport',
   },
   {
     id: 2,
     name: 'Instagram',
-    link: 'https://instagram.com',
+    link: 'https://www.instagram.com/bottlecapimport/',
   },
 ];
 
