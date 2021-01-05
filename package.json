@@ -6,7 +6,7 @@
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "dependencies": {
     "@rebass/forms": "^4.0.5",
-    "axios": "^0.19.0",
+    "axios": "^0.21.1",
     "babel-plugin-styled-components": "^1.10.6",
     "formik": "^1.5.8",
     "gatsby": "^2.13.73",
