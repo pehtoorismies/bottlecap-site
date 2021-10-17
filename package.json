@@ -1,9 +1,9 @@
 {
-  "name": "gatsby-starter-default",
+  "name": "bottlecap",
   "private": true,
-  "description": "A simple starter to get up and developing quickly with Gatsby",
-  "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "description": "Bottlecap site",
+  "version": "1.0",
+  "author": "Antti Tuomaala <pehtoorismies@gmail.com>",
   "dependencies": {
     "@rebass/forms": "^4.0.5",
     "axios": "^0.19.0",
@@ -47,7 +47,8 @@
     "prettier": "^1.18.2"
   },
   "keywords": [
-    "gatsby"
+    "gatsby",
+    "bottlecap"
   ],
   "license": "MIT",
   "scripts": {
@@ -59,12 +60,5 @@
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing \"",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/gatsbyjs/gatsby-starter-default"
-  },
-  "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
   }
 }
