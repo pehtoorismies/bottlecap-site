@@ -1,6 +1,6 @@
-import React from 'react';
-import { string, node, arrayOf, number, oneOfType } from 'prop-types';
-import { Box } from 'rebass/styled-components';
+import React from 'react'
+import { string, node, arrayOf, number, oneOfType } from 'prop-types'
+import { Box } from 'rebass/styled-components'
 
 const PropTypes = {
   backgroundImage: oneOfType([string, arrayOf(string)]).isRequired,
@@ -9,10 +9,10 @@ const PropTypes = {
   children: node.isRequired,
   topPadding: arrayOf(number).isRequired,
   bottomPadding: arrayOf(number).isRequired,
-};
-const DefaultProps = {};
+}
+const DefaultProps = {}
 
-const ContentBlock = props => {
+const ContentBlock = (props) => {
   const {
     backgroundImage,
     backgroundSize,
@@ -20,7 +20,7 @@ const ContentBlock = props => {
     topPadding,
     bottomPadding,
     children,
-  } = props;
+  } = props
 
   return (
     <Box
@@ -36,10 +36,10 @@ const ContentBlock = props => {
     >
       {children}
     </Box>
-  );
-};
+  )
+}
 
-ContentBlock.propTypes = PropTypes;
-ContentBlock.defaultProps = DefaultProps;
+ContentBlock.propTypes = PropTypes
+ContentBlock.defaultProps = DefaultProps
 
-export default ContentBlock;
+export default ContentBlock

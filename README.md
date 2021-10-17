@@ -2,7 +2,7 @@
 
 Simple Gatsby site for Bottlecap
 
-## Development 
+## Development
 
 ### Local dev
 
@@ -10,13 +10,11 @@ Simple Gatsby site for Bottlecap
 yarn develop
 ```
 
-
 ### Storybook
 
 ```
 yarn storybook
 ```
-
 
 ## Deployment
 
@@ -25,7 +23,3 @@ Deploys to Netlify
 ```
 git push origin master
 ```
-
-
-
-

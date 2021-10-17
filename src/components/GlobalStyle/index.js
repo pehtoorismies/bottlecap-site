@@ -1,5 +1,5 @@
-import reset from 'styled-reset';
-import { createGlobalStyle } from 'styled-components';
+import reset from 'styled-reset'
+import { createGlobalStyle } from 'styled-components'
 
 const GlobalStyle = createGlobalStyle`
   ${reset}
@@ -9,6 +9,6 @@ const GlobalStyle = createGlobalStyle`
     height: 100%;
     font-family: 'Roboto Mono', sans-serif
   }
-`;
+`
 
-export default GlobalStyle;
+export default GlobalStyle

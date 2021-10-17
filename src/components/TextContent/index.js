@@ -1,20 +1,21 @@
-import React from 'react';
-import { string } from 'prop-types';
-import styled from 'styled-components';
-import { Text, Box, Flex } from 'rebass/styled-components';
+import React from 'react'
+import { string } from 'prop-types'
+import styled from 'styled-components'
+import { Text, Box, Flex } from 'rebass/styled-components'
 
 const PropTypes = {
   header: string,
   description: string,
-};
+}
+
 const DefaultProps = {
   header: 'Main',
   description: 'Paragraph',
-};
+}
 
 const Wrapper = styled(Box)`
   color: #000000;
-`;
+`
 
 const Header = styled(Text)`
   font-family: Eczar;
@@ -22,20 +23,20 @@ const Header = styled(Text)`
   font-weight: 600;
   line-height: 1.04;
   letter-spacing: -0.51px;
-`;
+`
 
 const Description = styled(Text)`
   font-family: 'Roboto Mono';
   font-size: 16px;
   line-height: 1.63;
   color: #000000;
-`;
+`
 
-const TextContent = props => {
-  const { header, description } = props;
+const TextContent = (props) => {
+  const { header, description } = props
 
   return (
-    <Wrapper >
+    <Wrapper>
       <Header fontSize={[56, 56, 88]} width={[300, 418, 775]} mb={4}>
         {header}
       </Header>
@@ -45,10 +46,10 @@ const TextContent = props => {
         </Description>
       </Flex>
     </Wrapper>
-  );
-};
+  )
+}
 
-TextContent.propTypes = PropTypes;
-TextContent.defaultProps = DefaultProps;
+TextContent.propTypes = PropTypes
+TextContent.defaultProps = DefaultProps
 
-export default TextContent;
+export default TextContent

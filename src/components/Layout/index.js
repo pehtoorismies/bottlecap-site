@@ -1,6 +1,6 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import GlobalStyle from '../GlobalStyle';
+import React from 'react'
+import PropTypes from 'prop-types'
+import GlobalStyle from '../GlobalStyle'
 
 const Layout = ({ children }) => {
   return (
@@ -8,11 +8,11 @@ const Layout = ({ children }) => {
       <GlobalStyle />
       {children}
     </>
-  );
-};
+  )
+}
 
 Layout.propTypes = {
   children: PropTypes.node.isRequired,
-};
+}
 
-export default Layout;
+export default Layout

@@ -1,31 +1,31 @@
-import React from 'react';
-import styled from 'styled-components';
-import { Box, Flex } from 'rebass/styled-components';
-import SEO from '../components/Seo';
-import Layout from '../components/Layout';
-import TextContent from '../components/TextContent';
-import ContentBlock from '../components/ContentBlock';
-import SocialMediaLink from '../components/SocialMediaLink';
-import ContactForm from '../components/ContactForm';
-import logo from '../images/bottlecap-logo.svg';
-import bgHeader from '../images/header.png';
-import bgForms from '../images/shops.png';
-import bgSocial from '../images/follow.png';
+import React from 'react'
+import styled from 'styled-components'
+import { Box, Flex } from 'rebass/styled-components'
+import SEO from '../components/Seo'
+import Layout from '../components/Layout'
+import TextContent from '../components/TextContent'
+import ContentBlock from '../components/ContentBlock'
+import SocialMediaLink from '../components/SocialMediaLink'
+import ContactForm from '../components/ContactForm'
+import logo from '../images/bottlecap-logo.svg'
+import bgHeader from '../images/header.png'
+import bgForms from '../images/shops.png'
+import bgSocial from '../images/follow.png'
 
 const LogoBoxTopLeft = styled(Box)`
   position: absolute;
   z-index: 2;
   top: 24px;
-`;
+`
 
 const LogoBoxBottomRight = styled(Box)`
   position: absolute;
   z-index: 2;
   bottom: 24px;
   right: 24px;
-`;
+`
 
-const Logo = styled.img``;
+const Logo = styled.img``
 
 const TEXT_CONTENT = {
   header: {
@@ -43,7 +43,7 @@ const TEXT_CONTENT = {
     description:
       'Stay updated with the beers we are currently offering and where to find them.',
   },
-};
+}
 
 const SOCIAL_MEDIA = [
   {
@@ -56,7 +56,7 @@ const SOCIAL_MEDIA = [
     name: 'Instagram',
     link: 'https://www.instagram.com/bottlecapimport/',
   },
-];
+]
 
 const COMMON_BG = {
   backgroundRepeat: 'no-repeat',
@@ -67,9 +67,9 @@ const COMMON_BG = {
     'left top, center',
     'left top, center',
   ],
-};
+}
 
-const fromBg = width => `${width}px ${(800 / 1440) * width}px`;
+const fromBg = (width) => `${width}px ${(800 / 1440) * width}px`
 
 const BACKGROUNDS = {
   header: {
@@ -103,9 +103,9 @@ const BACKGROUNDS = {
     ],
     bottomPadding: [110, 110, 210],
   },
-};
+}
 
-const MarginX = props => (
+const MarginX = (props) => (
   <Box
     {...props}
     sx={{
@@ -113,7 +113,7 @@ const MarginX = props => (
       position: 'relative',
     }}
   />
-);
+)
 const IndexPage = () => (
   <Layout>
     <SEO title="High-quality beer import" />
@@ -151,13 +151,13 @@ const IndexPage = () => (
           description={TEXT_CONTENT.social.description}
         />
         <Flex flexDirection="column" alignItems="flex-end" my={[30, 30, 50]}>
-          {SOCIAL_MEDIA.map(value => {
-            return <SocialMediaLink key={value.id} {...value} />;
+          {SOCIAL_MEDIA.map((value) => {
+            return <SocialMediaLink key={value.id} {...value} />
           })}
         </Flex>
       </MarginX>
     </ContentBlock>
   </Layout>
-);
+)
 
-export default IndexPage;
+export default IndexPage
